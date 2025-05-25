@@ -7,168 +7,182 @@
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Rubik+Moonrocks&display=swap');
 
     /* Reset and background */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
-    body, html {
-      width: 100%; height: 100%;
-      overflow: hidden;
-      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Rubik Moonrocks', cursive;
-      color: #fff;
-      user-select: none;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Rubik+Moonrocks&display=swap');
 
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4.5rem;
-      text-shadow: 0 0 15px #fff, 0 0 30px #ff6f91, 0 0 45px #ff6f91;
-      animation: glowText 3s ease-in-out infinite alternate;
-      margin-bottom: 15px;
-    }
+/* Reset and layout */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+body, html {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f6d365, #fda085, #ff9a9e);
+  background-size: 300% 300%;
+  animation: backgroundShift 20s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Rubik Moonrocks', cursive;
+  color: #fff;
+  user-select: none;
+}
+@keyframes backgroundShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
 
-    @keyframes glowText {
-      0% { text-shadow: 0 0 10px #fff, 0 0 20px #ff4a69, 0 0 30px #ff4a69; }
-      100% { text-shadow: 0 0 20px #fff, 0 0 40px #ff6f91, 0 0 60px #ff6f91; }
-    }
+/* Title styling */
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 5rem;
+  text-shadow:
+    0 0 10px #fff,
+    0 0 20px #ff4a69,
+    0 0 40px #ff6f91,
+    0 0 60px #ffb6c1;
+  animation: glowText 3s ease-in-out infinite alternate;
+  margin-bottom: 20px;
+}
+@keyframes glowText {
+  0% { text-shadow: 0 0 10px #fff, 0 0 20px #ff4a69; }
+  100% { text-shadow: 0 0 25px #fff, 0 0 50px #ff6f91; }
+}
 
-    /* Princess container */
-    .princess-container {
-      position: relative;
-      width: 350px;
-      height: 450px;
-      background: #fff0f5;
-      border-radius: 30px;
-      box-shadow:
-        0 0 40px 10px #ff6f91,
-        inset 0 0 20px 2px #ffb6c1;
-      overflow: visible;
-      animation: floatUpDown 6s ease-in-out infinite;
-      cursor: default;
-    }
-    @keyframes floatUpDown {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-25px); }
-    }
+/* Princess container */
+.princess-container {
+  position: relative;
+  width: 350px;
+  height: 450px;
+  background: rgba(255, 240, 245, 0.7);
+  border-radius: 30px;
+  box-shadow:
+    0 0 50px 15px rgba(255, 111, 145, 0.5),
+    inset 0 0 25px 5px rgba(255, 182, 193, 0.4);
+  overflow: visible;
+  animation: floatUpDown 6s ease-in-out infinite;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+.princess-container::before {
+  content: "";
+  position: absolute;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff6f91, #ffe4e1, #ff1493);
+  background-size: 400% 400%;
+  animation: shimmerBorder 5s linear infinite;
+  z-index: -1;
+}
+@keyframes shimmerBorder {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-25px); }
+}
 
-    svg {
-      display: block;
-      margin: 30px auto 0;
-      width: 280px;
-      height: auto;
-      filter: drop-shadow(0 0 15px #ff6f91);
-      animation: bounce 3s ease-in-out infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
+.princess-container img {
+  width: 280px;
+  border-radius: 20px;
+  filter: drop-shadow(0 0 15px #ff6f91);
+  animation: bounce 3s ease-in-out infinite;
+  transition: transform 0.5s ease;
+}
+.princess-container:hover img {
+  transform: scale(1.05) rotate(-1deg);
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
 
-    /* Birthday message */
-    .message {
-      font-size: 1.6rem;
-      text-align: center;
-      padding: 20px 40px;
-      margin-top: 20px;
-      color: #fff;
-      text-shadow: 0 0 8px #ff69b4;
-      animation: fadeInUp 2s ease forwards;
-      opacity: 0;
-      animation-delay: 1.2s;
-    }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+/* Birthday message */
+.message {
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 20px 40px;
+  margin-top: 20px;
+  color: #fff;
+  text-shadow: 0 0 8px #ff69b4, 0 0 12px #ff69b4;
+  animation: fadeInUp 2s ease forwards;
+  opacity: 0;
+  animation-delay: 1.2s;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    /* Quote */
-    .quote {
-      font-family: 'Great Vibes', cursive;
-      font-size: 1.8rem;
-      margin-top: 10px;
-      color: #ffe4e1cc;
-      text-shadow: 0 0 6px #ffb6c1;
-      font-style: italic;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-      animation-delay: 3.2s;
-      max-width: 70vw;
-      text-align: center;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
+/* Quote */
+.quote {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  margin-top: 10px;
+  color: #ffe4e1cc;
+  text-shadow: 0 0 6px #ffb6c1;
+  font-style: italic;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+  animation-delay: 3.2s;
+  max-width: 80vw;
+  text-align: center;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    /* Confetti container */
-    .confetti {
-      position: fixed;
-      pointer-events: none;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: visible;
-      z-index: 9999;
-    }
+/* Confetti */
+.confetti {
+  position: fixed;
+  pointer-events: none;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 9999;
+}
+.confetti-piece {
+  position: absolute;
+  width: 12px; height: 12px;
+  background-color: #ff6f91;
+  opacity: 0.9;
+  border-radius: 2px;
+  animation: confetti-fall linear infinite, confetti-rotate linear infinite;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-10vh); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+@keyframes confetti-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
-    .confetti-piece {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background-color: #ff6f91;
-      opacity: 0.9;
-      border-radius: 2px;
-      animation-name: confetti-fall, confetti-rotate;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-    }
+/* Magical Particles */
+.particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 9998;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, #ff69b4);
+  opacity: 0.8;
+  animation: particle-move ease-in-out infinite, particle-fade ease-in-out infinite;
+}
+@keyframes particle-move {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  50% { transform: translate(20px, -20px) scale(1.3); opacity: 0.6; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+@keyframes particle-fade {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.3; }
+}
 
-    @keyframes confetti-fall {
-      0% { transform: translateY(-10vh); opacity: 1; }
-      100% { transform: translateY(110vh); opacity: 0; }
-    }
-    @keyframes confetti-rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Magical particles */
-    .particles {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      overflow: visible;
-      z-index: 9998;
-    }
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle, #fff, #ff69b4);
-      opacity: 0.8;
-      animation-name: particle-move, particle-fade;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
-    }
-    @keyframes particle-move {
-      0% { transform: translate(0, 0) scale(1); opacity: 1; }
-      50% { transform: translate(20px, -20px) scale(1.3); opacity: 0.6; }
-      100% { transform: translate(0, 0) scale(1); opacity: 1; }
-    }
-    @keyframes particle-fade {
-      0%, 100% { opacity: 0.8; }
-      50% { opacity: 0.3; }
-    }
   </style>
 </head>
 <body>
@@ -190,6 +204,16 @@
 
   <div class="confetti"></div>
   <div class="particles"></div>
+  <div class="twinkle" style="top:10%;left:20%;animation-delay:1s;"></div>
+<div class="twinkle" style="top:30%;left:70%;animation-delay:2s;"></div>
+<div class="twinkle" style="top:50%;left:40%;animation-delay:3s;"></div>
+<div class="twinkle" style="top:80%;left:10%;animation-delay:1.8s;"></div>
+
+<!-- Floating Hearts -->
+<div class="heart" style="left:10%;bottom:0;animation-delay:0s;"></div>
+<div class="heart" style="left:50%;bottom:0;animation-delay:1.2s;"></div>
+<div class="heart" style="left:80%;bottom:0;animation-delay:2.5s;"></div>
+
 
   <audio autoplay loop>
     <source src="happy_birthday.mp3" type="audio/mp3" />
@@ -226,6 +250,9 @@
       particlesContainer.appendChild(p);
     }
   </script>
+
+<!-- Twinkle Stars -->
+
 
 </body>
 </html>
