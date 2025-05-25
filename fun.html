@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🤯 Mystery Birthday Girl 🤯</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: radial-gradient(circle, #ffe4e1, #f08080);
+      font-family: 'Rubik Moonrocks', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #fff;
+      text-shadow: 2px 2px 10px #000;
+      animation: flicker 1.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; transform: scale(1.03); }
+      100% { opacity: 1; }
+    }
+
+    .funny-frame {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 10px double #ff00ff;
+      padding: 10px;
+      background: #fff;
+      box-shadow: 0 0 30px 10px #ff00ff88;
+      overflow: hidden;
+      animation: bounce 2s infinite;
+    }
+
+    .funny-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: hue-rotate(30deg) saturate(1.5);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .reveal-btn {
+      margin-top: 40px;
+      padding: 20px 40px;
+      font-size: 1.5em;
+      color: white;
+      background: linear-gradient(45deg, #ff00cc, #3333ff);
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ff00ff;
+      animation: pop 2s infinite;
+      transition: transform 0.2s;
+    }
+
+    .reveal-btn:hover {
+      transform: scale(1.1) rotate(-2deg);
+    }
+
+    @keyframes pop {
+      0% { box-shadow: 0 0 10px #ff00ff; }
+      50% { box-shadow: 0 0 30px #00ffff; }
+      100% { box-shadow: 0 0 10px #ff00ff; }
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: floaty 6s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    .emoji:nth-child(1) { top: 5%; left: 5%; animation-delay: 0s; }
+    .emoji:nth-child(2) { top: 20%; right: 10%; animation-delay: 1s; }
+    .emoji:nth-child(3) { bottom: 15%; left: 15%; animation-delay: 2s; }
+    .emoji:nth-child(4) { bottom: 10%; right: 5%; animation-delay: 3s; }
+    .emoji:nth-child(5) { top: 50%; left: 45%; animation-delay: 4s; }
+
+    @keyframes floaty {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-30px) rotate(10deg); }
+      100% { transform: translateY(0); }
+    }
+
+    .loader-bar {
+      margin-top: 30px;
+      width: 200px;
+      height: 15px;
+      border-radius: 10px;
+      background: #ffffff55;
+      overflow: hidden;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .loader-inner {
+      height: 100%;
+      width: 0%;
+      background: #00ffcc;
+      animation: load 5s forwards;
+    }
+
+    @keyframes load {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ff69b4;
+      opacity: 0.8;
+      animation: fall 3s infinite linear;
+      border-radius: 50%;
+    }
+
+    .confetti:nth-child(11) { top: 0; left: 10%; animation-delay: 0s; }
+    .confetti:nth-child(12) { top: 0; left: 30%; animation-delay: 1s; }
+    .confetti:nth-child(13) { top: 0; left: 50%; animation-delay: 2s; }
+    .confetti:nth-child(14) { top: 0; left: 70%; animation-delay: 1.5s; }
+    .confetti:nth-child(15) { top: 0; left: 90%; animation-delay: 0.5s; }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop>
+    <source src="happy_birthday.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <h1>GUESS WHO'S THIS MISS? 🤪</h1>
+
+  <div class="funny-frame">
+    <img src="chan1.jpg" alt="Mystery Girl">
+  </div>
+
+  <div class="loader-bar">
+    <div class="loader-inner"></div>
+  </div>
+
+  <button class="reveal-btn" onclick="window.location.href='surprise.html'">
+    Miss Click me 🎁
+  </button>
+
+  <!-- Floating Emojis -->
+  <div class="emoji">🎂</div>
+  <div class="emoji">🤣</div>
+  <div class="emoji">🎉</div>
+  <div class="emoji">😜</div>
+  <div class="emoji">✨</div>
+
+  <!-- Confetti Elements -->
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+  <div class="confetti"></div>
+
+</body>
+</html>
